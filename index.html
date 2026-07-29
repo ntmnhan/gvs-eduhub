@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GVS Eduhub - Điều Hành PHT</title>
+    <!-- Tailwind CSS cho giao diện hiện đại, chuyên nghiệp -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome cho Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar Trái -->
+        <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
+            <div class="p-5 text-xl font-bold border-b border-slate-800 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap text-blue-400"></i> GVS EDUB
+            </div>
+            <nav class="flex-1 p-4 space-y-4 overflow-y-auto text-sm">
+                <div>
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">1. Điều hành tổng quan</p>
+                    <a href="#" onclick="switchTab('dashboard')" class="flex items-center gap-3 p-2.5 rounded-lg bg-blue-600 text-white"><i class="fa-solid fa-chart-pie w-5"></i> Dashboard</a>
+                    <a href="#" onclick="switchTab('calendar')" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-800 text-slate-300"><i class="fa-solid fa-calendar-days w-5"></i> Lịch Công Tác</a>
+                    <a href="#" onclick="switchTab('kanban')" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-800 text-slate-300"><i class="fa-solid fa-list-check w-5"></i> Tiến Độ Việc Giao</a>
+                </div>
+                <div>
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">2. Quản lý chuyên môn</p>
+                    <a href="#" onclick="switchTab('documents')" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-800 text-slate-300"><i class="fa-solid fa-folder-open w-5"></i> Xử Lý & Lưu Trữ VB</a>
+                    <a href="#" onclick="switchTab('timetable')" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-800 text-slate-300"><i class="fa-solid fa-table-cells w-5"></i> TKB & Phân Công CM</a>
+                    <a href="#" onclick="switchTab('reports')" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-800 text-slate-300"><i class="fa-solid fa-chart-line w-5"></i> Thống Kê & Báo Cáo</a>
+                </div>
+                <div>
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">3. Hệ sinh thái tích hợp</p>
+                    <a href="#" onclick="switchTab('ecosystem')" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-slate-800 text-slate-300"><i class="fa-solid fa-cube w-5"></i> Phần Mềm Hỗ Trợ</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-6">
+                <h1 id="page-title" class="text-lg font-bold text-slate-800">Dashboard Điều Hành Khẩn</h1>
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-medium text-slate-600">PHT. Ngữ Văn / KHTN</span>
+                    <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">GV</div>
+                </div>
+            </header>
+
+            <!-- Dynamic Content Area -->
+            <div id="content-area" class="p-6">
+                <!-- Nội dung mặc định là Dashboard -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Thẻ 1 -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-semibold text-blue-600 uppercase">Cần xử lý</p>
+                                <h3 class="text-3xl font-ext500 font-bold text-blue-900 mt-1">04</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center text-blue-700 text-xl"><i class="fa-solid fa-envelope-open-text"></i></div>
+                        </div>
+                        <p class="text-xs text-blue-700 mt-3">Văn bản từ VPĐT đang chờ bóc tách nhiệm vụ.</p>
+                    </div>
+                    <!-- Thẻ 2 -->
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-5 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-semibold text-red-600 uppercase">Deadline Cần Báo Cáo</p>
+                                <h3 class="text-3xl font-bold text-red-900 mt-1">02</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-red-200 rounded-full flex items-center justify-center text-red-700 text-xl"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        </div>
+                        <p class="text-xs text-red-700 mt-3">⚠️ Báo cáo sơ kết học kỳ và Kiểm định chất lượng sắp đến hạn.</p>
+                    </div>
+                </div>
+
+                <!-- Lịch công tác & Màu sắc theo yêu cầu -->
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-slate-800">Lịch Công Tác Tuần (Mã màu chuẩn)</h3>
+                        <button class="bg-blue-600 text-white text-sm px-3 py-1.5 rounded-lg hover:bg-blue-700 flex items-center gap-2"><i class="fa-solid fa-plus"></i> Thêm sự kiện</button>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-red-50 border-l-4 border-red-500 rounded-r-lg flex justify-between items-center">
+                            <div>
+                                <span class="text-xs font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">Họp Sở / Phường</span>
+                                <h4 class="font-semibold text-slate-800 mt-1">Họp giao ban hiệu trưởng với Phòng GD&ĐT Gò Vấp</h4>
+                            </div>
+                            <span class="text-xs text-slate-500">Thứ Hai (08:00)</span>
+                        </div>
+                        <div class="p-3 bg-green-50 border-l-4 border-green-500 rounded-r-lg flex justify-between items-center">
+                            <div>
+                                <span class="text-xs font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">Họp HĐSP / BGH</span>
+                                <h4 class="font-semibold text-slate-800 mt-1">Họp Hội Đồng Sư Phạm triển khai nhiệm vụ tháng</h4>
+                            </div>
+                            <span class="text-xs text-slate-500">Thứ Tư (14:00)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            const titleEl = document.getElementById('page-title');
+            const contentEl = document.getElementById('content-area');
+            if(tabName === 'dashboard') {
+                titleEl.innerText = "Dashboard Điều Hành Khẩn";
+                contentEl.innerHTML = `<div class="text-slate-600">Đang hiển thị nội dung Dashboard chính...</div>`;
+            } else if(tabName === 'calendar') {
+                titleEl.innerText = "Lịch Công Tác Tuần & Sự Kiện";
+                contentEl.innerHTML = `<div class="text-slate-600">Giao diện quản lý Lịch công tác và tùy chọn gửi Zalo tự động cho GV...</div>`;
+            } else if(tabName === 'documents') {
+                titleEl.innerText = "Xử Lý & Lưu Trữ Văn Bản (Đến & Đi)";
+                contentEl.innerHTML = `<div class="text-slate-600">Tab 1: Văn bản Đến (Bộ, Sở, UBND Phường Hạnh Thông) & Tab 2: Văn bản Đi...</div>`;
+            } else if(tabName === 'timetable') {
+                titleEl.innerText = "TKB & Phân Công Chuyên Môn";
+                contentEl.innerHTML = `<div class="text-slate-600">Hệ thống đối chiếu PCCM theo thời điểm và thống kê tiết dạy của GV...</div>`;
+            } else if(tabName === 'ecosystem') {
+                titleEl.innerText = "Phần Mềm Hỗ Trợ (Integration Hub)";
+                contentEl.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 bg-white border rounded-xl shadow-sm hover:border-blue-500 cursor-pointer"><h4 class="font-bold text-blue-600">App Xếp Lớp</h4><p class="text-sm text-slate-500">Thuật toán cân bằng sĩ số, nam/nữ, học sinh hòa nhập.</p></div>
+                    <div class="p-4 bg-white border rounded-xl shadow-sm hover:border-blue-500 cursor-pointer"><h4 class="font-bold text-blue-600">App Xếp Phòng Thi</h4><p class="text-sm text-slate-500">Đánh số báo danh, chia phòng tự động.</p></div>
+                    <div class="p-4 bg-white border rounded-xl shadow-sm hover:border-blue-500 cursor-pointer"><h4 class="font-bold text-blue-600">App Soạn KHBD (5512)</h4><p class="text-sm text-slate-500">Tích hợp năng lực số và trợ lý AI.</p></div>
+                    <div class="p-4 bg-white border rounded-xl shadow-sm hover:border-blue-500 cursor-pointer"><h4 class="font-bold text-blue-600">App Kế Hoạch GD Cá Nhân</h4><p class="text-sm text-slate-500">Hồ sơ theo dõi cho học sinh hòa nhập.</p></div>
+                </div>`;
+            } else {
+                titleEl.innerText = "Nội dung Mô-đun";
+                contentEl.innerHTML = `<div class="text-slate-600">Đang cập nhật dữ liệu...</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
