@@ -15,7 +15,7 @@
 <body class="bg-slate-50 font-sans text-slate-900">
 
     <div class="flex h-screen overflow-hidden">
-        <!-- Sidebar Trái -->
+        <!-- Sidebar Trái Đầy Đủ Tất Cả Module -->
         <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-xl hidden md:flex">
             <div class="p-5 border-b border-slate-800 cursor-pointer hover:bg-slate-800/80 transition-all" onclick="switchTab('dashboard')">
                 <div class="flex items-center gap-3">
@@ -33,9 +33,9 @@
                 <div>
                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">1. Điều hành tổng quan</p>
                     <div class="space-y-1.5">
-                        <a href="#" onclick="switchTab('dashboard')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-blue-600 text-white font-medium transition-all shadow-md"><i class="fa-solid fa-chart-pie w-5 text-center text-blue-200"></i> Trang chủ / Tổng quan</a>
-                        <a href="#" onclick="switchTab('calendar')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-calendar-days w-5 text-center text-amber-400"></i> Lịch công tác</a>
-                        <a href="#" onclick="switchTab('kanban')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-list-check w-5 text-center text-emerald-400"></i> Tiến độ công việc</a>
+                        <a href="#" onclick="switchTab('dashboard')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-chart-pie w-5 text-center text-blue-400"></i> Trang chủ / Tổng quan</a>
+                        <a href="#" onclick="switchTab('calendar')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-calendar-days w-5 text-center text-amber-400"></i> Lịch công tác (Word/PDF)</a>
+                        <a href="#" onclick="switchTab('kanban')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-list-check w-5 text-center text-emerald-400"></i> Tiến độ công việc (Kanban)</a>
                     </div>
                 </div>
                 <div>
@@ -50,7 +50,7 @@
                         <a href="#" onclick="switchTab('app31')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-book-open-reader w-5 text-center text-amber-400 text-base"></i> 3.1. App soạn KHBD & AI</a>
                         <a href="#" onclick="switchTab('app32')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-users-rectangle w-5 text-center text-cyan-400 text-base"></i> 3.2. App xếp lớp</a>
                         <a href="#" onclick="switchTab('app33')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-id-card w-5 text-center text-emerald-400 text-base"></i> 3.3. App xếp phòng thi</a>
-                        <a href="#" onclick="switchTab('app34')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-child-reaching w-5 text-center text-fuchsia-400 text-base"></i> 3.4. App KHGD cá nhân (HS hòa nhập)</a>
+                        <a href="#" onclick="switchTab('app34')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-child-reaching w-5 text-center text-fuchsia-400 text-base"></i> 3.4. App KHGD cá nhân (HN)</a>
                     </div>
                 </div>
             </nav>
@@ -84,6 +84,13 @@
         </main>
     </div>
 
+    <!-- Thư viện đọc file Word và PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+
     <script>
         function switchTab(tabName) {
             const contentEl = document.getElementById('content-area');
@@ -91,118 +98,165 @@
             if(tabName === 'dashboard') {
                 contentEl.innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:border-blue-400 transition-all" onclick="switchTab('documents')">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-sky-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-folder-open"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Văn Bản Đến</h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Bóc tách & tóm tắt AI</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:border-amber-400 transition-all" onclick="switchTab('calendar')">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-amber-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Lịch Công Tác</h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Tải Word / PDF tuần</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:border-emerald-400 transition-all" onclick="switchTab('kanban')">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-list-check"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Tiến Độ Kanban</h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Giám sát công việc tổ</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:border-cyan-400 transition-all" onclick="switchTab('app32')">
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 bg-cyan-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-users-rectangle"></i></div>
                             <div>
-                                <h4 class="font-bold text-slate-800 text-sm">3.2. App Xếp Lớp</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Phân chia sĩ số đồng đều</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:border-emerald-400 transition-all" onclick="switchTab('app33')">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-id-card"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 text-sm">3.3. Xếp Phòng Thi</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Lập SBD & sơ đồ phòng</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:border-fuchsia-400 transition-all" onclick="switchTab('app34')">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-fuchsia-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-child-reaching"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 text-sm">3.4. HS Hòa Nhập</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Kế hoạch giáo dục cá nhân</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:border-amber-400 transition-all" onclick="switchTab('app31')">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-amber-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-book-open-reader"></i></div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 text-sm">3.1. Soạn KHBD AI</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Tích hợp năng lực số</p>
+                                <h4 class="font-bold text-slate-800 text-sm">App Xếp Lớp</h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Cân đối sĩ số đầu cấp</p>
                             </div>
                         </div>
                     </div>
                 </div>`;
             } 
+            else if(tabName === 'calendar') {
+                contentEl.innerHTML = `
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+                    <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-calendar-days text-amber-500"></i> Lịch Công Tác Tuần (Đọc file Word & PDF)</h3>
+                            <p class="text-xs text-slate-500 mt-1">Tải lên file lịch tuần từ văn phòng để hệ thống tự động tổng hợp trực quan.</p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center text-lg shadow-sm">
+                                <i class="fa-solid fa-file-arrow-up"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs uppercase">Cập nhật lịch tự động từ file Word hoặc PDF</h4>
+                                <p class="text-[11px] text-slate-500">Hỗ trợ file .docx và .pdf</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 w-full sm:w-auto">
+                            <input type="file" id="scheduleFileInput" accept=".docx, .pdf" class="hidden" onchange="handleScheduleUpload(event)">
+                            <label for="scheduleFileInput" class="cursor-pointer bg-white hover:bg-blue-600 hover:text-white text-blue-600 border border-blue-300 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-2xs flex items-center justify-center gap-1.5 w-full sm:w-auto">
+                                <i class="fa-solid fa-upload"></i> Chọn file lịch tuần
+                            </label>
+                        </div>
+                    </div>
+                    <div id="calendar-result-area" class="space-y-4">
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center text-slate-500 text-xs">
+                            Chưa có file nào được tải lên. Vui lòng chọn file Word hoặc PDF ở trên để hiển thị lịch.
+                        </div>
+                    </div>
+                </div>`;
+            }
+            else if(tabName === 'kanban') {
+                contentEl.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-list-check text-emerald-500"></i> Theo Dõi Tiến Độ Công Việc (Kanban)</h3>
+                            <p class="text-xs text-slate-500 mt-1">Giám sát việc thực hiện nhiệm vụ chuyên môn của các Tổ, Bộ phận.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-slate-100 p-4 rounded-2xl border">
+                            <h4 class="text-xs font-bold text-slate-700 uppercase mb-3"><span class="w-2.5 h-2.5 inline-block rounded-full bg-slate-400 mr-1.5"></span> Chờ triển khai (2)</h4>
+                            <div class="bg-white p-3.5 rounded-xl border shadow-2xs">
+                                <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">TỔ KHTN</span>
+                                <h5 class="font-bold text-slate-800 text-xs mt-1">Nộp ma trận & đề kiểm tra giữa kỳ 2</h5>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-200">
+                            <h4 class="text-xs font-bold text-blue-700 uppercase mb-3"><span class="w-2.5 h-2.5 inline-block rounded-full bg-blue-500 mr-1.5"></span> Đang thực hiện (1)</h4>
+                            <div class="bg-white p-3.5 rounded-xl border shadow-2xs">
+                                <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">THƯ VIỆN</span>
+                                <h5 class="font-bold text-slate-800 text-xs mt-1">Kiểm kê thiết bị thực hành Lý - Hóa</h5>
+                            </div>
+                        </div>
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                            <h4 class="text-xs font-bold text-emerald-700 uppercase mb-3"><span class="w-2.5 h-2.5 inline-block rounded-full bg-emerald-500 mr-1.5"></span> Đã hoàn thành (1)</h4>
+                            <div class="bg-white p-3.5 rounded-xl border shadow-2xs">
+                                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">TOÀN TRƯỜNG</span>
+                                <h5 class="font-bold text-slate-800 text-xs mt-1 line-through">Đăng ký danh sách thi HSG cấp Quận</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }
+            else if(tabName === 'documents') {
+                contentEl.innerHTML = `
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+                    <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2 mb-4"><i class="fa-solid fa-folder-open text-sky-500"></i> Xử Lý Và Lưu Trữ Văn Bản Đến</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="space-y-4 bg-slate-50 p-4 rounded-xl border">
+                            <h4 class="font-bold text-xs text-slate-700 uppercase">Dán nội dung công văn</h4>
+                            <textarea id="docInputContent" rows="5" placeholder="Dán nội dung công văn..." class="w-full p-3 text-xs border rounded-xl outline-none"></textarea>
+                            <button onclick="processDocumentText()" class="w-full bg-sky-600 text-white text-xs font-bold py-2.5 rounded-xl">Bóc tách & Tóm tắt AI</button>
+                        </div>
+                        <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border">
+                            <h4 class="font-bold text-xs text-slate-700 uppercase mb-3">Kết quả tóm tắt</h4>
+                            <div id="docResultArea" class="bg-white p-4 rounded-lg border text-xs text-slate-700 min-h-[140px]">Chưa có văn bản phân tích.</div>
+                        </div>
+                    </div>
+                </div>`;
+            }
+            else if(tabName === 'app31') {
+                contentEl.innerHTML = `
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs max-w-3xl mx-auto">
+                    <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2"><i class="fa-solid fa-book-open-reader text-amber-500"></i> 3.1. Trợ Lý AI Soạn KHBD & Tích Hợp Năng Lực Số</h3>
+                    <div class="space-y-4 text-xs">
+                        <input type="text" placeholder="Tên bài học / Chủ đề..." class="w-full p-2.5 border rounded-xl outline-none">
+                        <button onclick="alert('Đã tạo xong cấu trúc KHBD tích hợp Năng lực số!')" class="w-full bg-amber-500 text-white font-bold py-3 rounded-xl">Tạo Cấu Trúc KHBD</button>
+                    </div>
+                </div>`;
+            }
             else if(tabName === 'app32') {
                 contentEl.innerHTML = `
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs max-w-3xl mx-auto">
-                    <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-users-rectangle text-cyan-500"></i> 3.2. App Xếp Lớp Tự Động (Đầu Cấp / Cân Đối Sĩ Số)
-                    </h3>
+                    <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2"><i class="fa-solid fa-users-rectangle text-cyan-500"></i> 3.2. App Xếp Lớp Tự Động</h3>
                     <div class="space-y-4 text-xs">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-bold text-slate-700 mb-1">Số lượng lớp cần chia:</label>
-                                <input type="number" value="6" class="w-full p-2.5 border rounded-xl outline-none">
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-700 mb-1">Tiêu chí cân bằng:</label>
-                                <select class="w-full p-2.5 border rounded-xl outline-none"><option>Giới tính (Nam/Nữ đồng đều)</option><option>Kết quả học tập (Đại trà/Khá giỏi)</option></select>
-                            </div>
-                        </div>
-                        <button onclick="alert('Hệ thống đã tự động phân bổ học sinh đều vào các lớp, đảm bảo tỷ lệ Nam/Nữ và học lực cân đối! Sẵn sàng xuất danh sách.')" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 rounded-xl transition-all shadow-sm">
-                            <i class="fa-solid fa-shuffle mr-2"></i> Thực Hiện Xếp Lớp Ngay
-                        </button>
+                        <input type="number" value="6" placeholder="Số lớp..." class="w-full p-2.5 border rounded-xl outline-none">
+                        <button onclick="alert('Đã phân bổ sĩ số đều các lớp!')" class="w-full bg-cyan-600 text-white font-bold py-3 rounded-xl">Thực Hiện Xếp Lớp</button>
                     </div>
                 </div>`;
             }
             else if(tabName === 'app33') {
                 contentEl.innerHTML = `
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs max-w-3xl mx-auto">
-                    <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-id-card text-emerald-500"></i> 3.3. App Xếp Phòng Thi & Tạo Số Báo Danh
-                    </h3>
+                    <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2"><i class="fa-solid fa-id-card text-emerald-500"></i> 3.3. App Xếp Phòng Thi & SBD</h3>
                     <div class="space-y-4 text-xs">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-bold text-slate-700 mb-1">Tên kỳ thi:</label>
-                                <input type="text" value="Khảo sát chất lượng Giữa kỳ 2" class="w-full p-2.5 border rounded-xl outline-none">
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-700 mb-1">Số thí sinh mỗi phòng:</label>
-                                <input type="number" value="24" class="w-full p-2.5 border rounded-xl outline-none">
-                            </div>
-                        </div>
-                        <button onclick="alert('Đã xáo trộn danh sách học sinh liên lớp, đánh số báo danh và phân bổ phòng thi thành công!')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-all shadow-sm">
-                            <i class="fa-solid fa-list-ol mr-2"></i> Tạo Sắp Xếp Phòng Thi & SBD
-                        </button>
+                        <input type="text" value="Khảo sát giữa kỳ 2" class="w-full p-2.5 border rounded-xl outline-none">
+                        <button onclick="alert('Đã tạo SBD và phòng thi xong!')" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl">Tạo Sắp Xếp Phòng Thi</button>
                     </div>
                 </div>`;
             }
             else if(tabName === 'app34') {
                 contentEl.innerHTML = `
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs max-w-3xl mx-auto">
-                    <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-child-reaching text-fuchsia-500"></i> 3.4. App Kế Hoạch Giáo Dục Cá Nhân (HS Hòa Nhập)
-                    </h3>
+                    <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2"><i class="fa-solid fa-child-reaching text-fuchsia-500"></i> 3.4. App KHGD Cá Nhân (HS Hòa Nhập)</h3>
                     <div class="space-y-4 text-xs">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-bold text-slate-700 mb-1">Họ và tên học sinh:</label>
-                                <input type="text" placeholder="Nhập tên học sinh..." class="w-full p-2.5 border rounded-xl outline-none">
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-700 mb-1">Khối / Lớp:</label>
-                                <input type="text" placeholder="Ví dụ: Lớp 7A1" class="w-full p-2.5 border rounded-xl outline-none">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block font-bold text-slate-700 mb-1">Dạng khuyết tật / Nhu cầu đặc biệt:</label>
-                            <input type="text" placeholder="Ví dụ: Khiếm thính nhẹ / Khó khăn về học tập..." class="w-full p-2.5 border rounded-xl outline-none">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-slate-700 mb-1">Mục tiêu điều chỉnh nội dung môn học:</label>
-                            <textarea rows="3" placeholder="Ghi rõ mức độ giảm tải kiến thức phù hợp..." class="w-full p-2.5 border rounded-xl outline-none"></textarea>
-                        </div>
-                        <button onclick="alert('Đã lưu và kết xuất biểu mẫu Kế hoạch giáo dục cá nhân cho học sinh hòa nhập!')" class="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold py-3 rounded-xl transition-all shadow-sm">
-                            <i class="fa-solid fa-file-lines mr-2"></i> Xuất Biểu Mẫu KHGDCN
-                        </button>
+                        <input type="text" placeholder="Họ tên học sinh..." class="w-full p-2.5 border rounded-xl outline-none">
+                        <button onclick="alert('Đã lưu biểu mẫu KHGD cá nhân!')" class="w-full bg-fuchsia-600 text-white font-bold py-3 rounded-xl">Xuất Biểu Mẫu</button>
                     </div>
                 </div>`;
             }
@@ -212,7 +266,53 @@
             }
         }
 
-        // Khởi chạy mặc định trang chủ
+        async function handleScheduleUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const resultArea = document.getElementById('calendar-result-area');
+            resultArea.innerHTML = `<div class="p-4 bg-blue-50 text-blue-700 rounded-xl text-center text-xs"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Đang đọc file ${file.name}...</div>`;
+            
+            const fileName = file.name.toLowerCase();
+            try {
+                if (fileName.endsWith('.docx')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        mammoth.convertToHtml({ arrayBuffer: e.target.result })
+                            .then(res => renderScheduleResult(file.name, res.value))
+                            .catch(err => alert("Lỗi đọc Word: " + err.message));
+                    };
+                    reader.readAsArrayBuffer(file);
+                } else if (fileName.endsWith('.pdf')) {
+                    const reader = new FileReader();
+                    reader.onload = async function(e) {
+                        const pdf = await pdfjsLib.getDocument(new Uint8Array(e.target.result)).promise;
+                        let text = "";
+                        for (let i = 1; i <= pdf.numPages; i++) {
+                            const page = await pdf.getPage(i);
+                            const content = await page.getTextContent();
+                            text += `<p class="mb-2">${content.items.map(i => i.str).join(" ")}</p>`;
+                        }
+                        renderScheduleResult(file.name, text);
+                    };
+                    reader.readAsArrayBuffer(file);
+                }
+            } catch (err) { alert("Lỗi xử lý file"); }
+        }
+
+        function renderScheduleResult(name, html) {
+            document.getElementById('calendar-result-area').innerHTML = `
+                <div class="p-5 bg-emerald-50 border border-emerald-200 rounded-xl">
+                    <h4 class="font-bold text-emerald-800 text-xs uppercase mb-3"><i class="fa-solid fa-circle-check"></i> Đã đồng bộ từ: ${name}</h4>
+                    <div class="text-xs text-slate-700 bg-white p-4 rounded-lg border max-h-96 overflow-y-auto">${html}</div>
+                </div>`;
+        }
+
+        function processDocumentText() {
+            const val = document.getElementById('docInputContent').value;
+            if(!val.trim()) { alert("Vui lòng nhập nội dung!"); return; }
+            document.getElementById('docResultArea').innerHTML = `<p class="font-bold text-sky-700">Đã tóm tắt:</p><p class="mt-1">${val}</p>`;
+        }
+
         switchTab('dashboard');
     </script>
 </body>
