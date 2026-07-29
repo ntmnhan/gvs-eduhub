@@ -17,38 +17,43 @@
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar Trái -->
         <aside class="w-72 bg-slate-900 text-white flex flex-col shadow-xl hidden md:flex">
-            <!-- Logo GVS EDUHUB & Subtitle -->
-            <div class="p-5 border-b border-slate-800 cursor-pointer hover:bg-slate-800 transition-all" onclick="switchTab('dashboard')">
-                <div class="text-lg font-bold tracking-wider flex items-center gap-3">
-                    <i class="fa-solid fa-graduation-cap text-blue-400 text-xl"></i> GVS EDUHUB
+            <!-- Logo GVS EDUHUB & Subtitle thành 1 dòng, màu nổi bật -->
+            <div class="p-5 border-b border-slate-800 cursor-pointer hover:bg-slate-800/80 transition-all" onclick="switchTab('dashboard')">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-md text-white text-lg">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-base font-black tracking-wider text-white">GVS EDUHUB</h1>
+                        <p class="text-[11px] font-medium text-cyan-400 whitespace-nowrap">Hệ thống Điều hành & Quản lý Chuyên môn</p>
+                    </div>
                 </div>
-                <p class="text-[11px] text-slate-400 mt-1 pl-8 font-medium">Hệ thống Điều hành & Quản lý Chuyên môn</p>
             </div>
             
             <nav class="flex-1 p-4 space-y-6 overflow-y-auto text-sm">
                 <div>
-                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">1. Điều hành tổng quan</p>
-                    <div class="space-y-1">
-                        <a href="#" onclick="switchTab('dashboard')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-blue-600 text-white font-medium transition-all shadow-md"><i class="fa-solid fa-chart-pie w-5 text-center"></i> Trang chủ / Tổng quan</a>
-                        <a href="#" onclick="switchTab('calendar')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-calendar-days w-5 text-center"></i> Lịch công tác</a>
-                        <a href="#" onclick="switchTab('kanban')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-list-check w-5 text-center"></i> Tiến độ công việc</a>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">1. Điều hành tổng quan</p>
+                    <div class="space-y-1.5">
+                        <a href="#" onclick="switchTab('dashboard')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-blue-600 text-white font-medium transition-all shadow-md"><i class="fa-solid fa-chart-pie w-5 text-center text-blue-200"></i> Trang chủ / Tổng quan</a>
+                        <a href="#" onclick="switchTab('calendar')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-calendar-days w-5 text-center text-amber-400"></i> Lịch công tác</a>
+                        <a href="#" onclick="switchTab('kanban')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-list-check w-5 text-center text-emerald-400"></i> Tiến độ công việc</a>
                     </div>
                 </div>
                 <div>
-                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">2. Quản lý chuyên môn</p>
-                    <div class="space-y-1">
-                        <a href="#" onclick="switchTab('documents')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-folder-open w-5 text-center"></i> Xử lý và lưu trữ VB</a>
-                        <a href="#" onclick="switchTab('timetable')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-table-cells w-5 text-center"></i> TKB và PCCM</a>
-                        <a href="#" onclick="switchTab('reports')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-chart-line w-5 text-center"></i> Thống kê & báo cáo</a>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">2. Quản lý chuyên môn</p>
+                    <div class="space-y-1.5">
+                        <a href="#" onclick="switchTab('documents')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-folder-open w-5 text-center text-sky-400"></i> Xử lý và lưu trữ VB</a>
+                        <a href="#" onclick="switchTab('timetable')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-table-cells w-5 text-center text-purple-400"></i> TKB và PCCM</a>
+                        <a href="#" onclick="switchTab('reports')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-chart-line w-5 text-center text-rose-400"></i> Thống kê & báo cáo</a>
                     </div>
                 </div>
                 <div>
-                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">3. Hệ sinh thái tích hợp</p>
-                    <div class="space-y-1">
-                        <a href="#" onclick="switchTab('app31')" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs"><i class="fa-solid fa-book-open-reader w-5 text-center text-amber-400"></i> 3.1. App soạn KHBD & NLS, AI</a>
-                        <a href="#" onclick="switchTab('app32')" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs"><i class="fa-solid fa-users-rectangle w-5 text-center text-blue-400"></i> 3.2. App xếp lớp</a>
-                        <a href="#" onclick="switchTab('app33')" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs"><i class="fa-solid fa-id-card w-5 text-center text-emerald-400"></i> 3.3. App xếp phòng thi</a>
-                        <a href="#" onclick="switchTab('app34')" class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs"><i class="fa-solid fa-child-reaching w-5 text-center text-purple-400"></i> 3.4. App KHGD cá nhân (HS hòa nhập)</a>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">3. Hệ sinh thái tích hợp</p>
+                    <div class="space-y-1.5">
+                        <a href="#" onclick="switchTab('app31')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-book-open-reader w-5 text-center text-amber-400 text-base"></i> 3.1. App soạn KHBD & NLS, AI</a>
+                        <a href="#" onclick="switchTab('app32')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-users-rectangle w-5 text-center text-cyan-400 text-base"></i> 3.2. App xếp lớp</a>
+                        <a href="#" onclick="switchTab('app33')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-id-card w-5 text-center text-emerald-400 text-base"></i> 3.3. App xếp phòng thi</a>
+                        <a href="#" onclick="switchTab('app34')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-child-reaching w-5 text-center text-fuchsia-400 text-base"></i> 3.4. App KHGD cá nhân (HS hòa nhập)</a>
                     </div>
                 </div>
             </nav>
@@ -179,23 +184,23 @@
                     </div>
                 </div>`;
             } else if(tabName === 'calendar') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-calendar-days text-blue-600 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Lịch công tác</h3><p class="mt-2">Quản lý lịch công tác tuần, lịch họp Sở, Phòng GD&ĐT và lịch sự kiện nội bộ nhà trường.</p></div>`;
+                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-calendar-days text-amber-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Lịch công tác</h3><p class="mt-2">Quản lý lịch công tác tuần, lịch họp Sở, Phòng GD&ĐT và lịch sự kiện nội bộ nhà trường.</p></div>`;
             } else if(tabName === 'kanban') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-list-check text-blue-600 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Tiến độ công việc</h3><p class="mt-2">Theo dõi các nhiệm vụ đã giao cho các tổ chuyên môn và giáo viên theo dạng bảng Kanban.</p></div>`;
+                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-list-check text-emerald-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Tiến độ công việc</h3><p class="mt-2">Theo dõi các nhiệm vụ đã giao cho các tổ chuyên môn và giáo viên theo dạng bảng Kanban.</p></div>`;
             } else if(tabName === 'documents') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-folder-open text-blue-600 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Xử lý và lưu trữ văn bản</h3><p class="mt-2">Quản lý kho văn bản đến từ cấp trên và văn bản đi do nhà trường ban hành.</p></div>`;
+                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-folder-open text-sky-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Xử lý và lưu trữ văn bản</h3><p class="mt-2">Quản lý kho văn bản đến từ cấp trên và văn bản đi do nhà trường ban hành.</p></div>`;
             } else if(tabName === 'timetable') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-table-cells text-blue-600 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">TKB và PCCM</h3><p class="mt-2">Quản lý thời khóa biểu và bảng phân công chuyên môn giáo viên.</p></div>`;
+                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-table-cells text-purple-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">TKB và PCCM</h3><p class="mt-2">Quản lý thời khóa biểu và bảng phân công chuyên môn giáo viên.</p></div>`;
             } else if(tabName === 'reports') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-chart-line text-blue-600 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Thống kê & báo cáo</h3><p class="mt-2">Trung tâm dữ liệu tổng hợp và báo cáo định kỳ gửi các cấp quản lý.</p></div>`;
+                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-chart-line text-rose-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Thống kê & báo cáo</h3><p class="mt-2">Trung tâm dữ liệu tổng hợp và báo cáo định kỳ gửi các cấp quản lý.</p></div>`;
             } else if(tabName === 'app31') {
                 contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-book-open-reader text-amber-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">3.1. App soạn KHBD & NLS, AI</h3><p class="mt-2">Hỗ trợ giáo viên soạn thảo kế hoạch bài dạy tích hợp năng lực số và trợ lý AI.</p></div>`;
             } else if(tabName === 'app32') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-users-rectangle text-blue-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">3.2. App xếp lớp</h3><p class="mt-2">Thuật toán tự động cân bằng sĩ số và chất lượng học sinh đầu cấp.</p></div>`;
+                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-users-rectangle text-cyan-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">3.2. App xếp lớp</h3><p class="mt-2">Thuật toán tự động cân bằng sĩ số và chất lượng học sinh đầu cấp.</p></div>`;
             } else if(tabName === 'app33') {
                 contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-id-card text-emerald-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">3.3. App xếp phòng thi</h3><p class="mt-2">Tự động phân chia phòng thi, số báo danh và lịch coi thi học kỳ.</p></div>`;
             } else if(tabName === 'app34') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-child-reaching text-purple-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">3.4. App KHGD cá nhân (HS hòa nhập)</h3><p class="mt-2">Quản lý và lập kế hoạch giáo dục chuyên biệt cho học sinh hòa nhập.</p></div>`;
+                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-child-reaching text-fuchsia-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">3.4. App KHGD cá nhân (HS hòa nhập)</h3><p class="mt-2">Quản lý và lập kế hoạch giáo dục chuyên biệt cho học sinh hòa nhập.</p></div>`;
             }
         }
     </script>
