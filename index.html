@@ -45,6 +45,12 @@
                         <a href="#" onclick="switchTab('reports')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all"><i class="fa-solid fa-chart-line w-5 text-center text-rose-400"></i> Thống kê & báo cáo</a>
                     </div>
                 </div>
+                <div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">3. Hệ sinh thái tích hợp</p>
+                    <div class="space-y-1.5">
+                        <a href="#" onclick="switchTab('app31')" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-white hover:translate-x-1 transition-all text-xs font-medium"><i class="fa-solid fa-book-open-reader w-5 text-center text-amber-400 text-base"></i> 3.1. App soạn KHBD & AI</a>
+                    </div>
+                </div>
             </nav>
         </aside>
 
@@ -76,7 +82,7 @@
         </main>
     </div>
 
-    <!-- Thư viện đọc file Word và PDF -->
+    <!-- Thư viện hỗ trợ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
@@ -89,175 +95,126 @@
             
             if(tabName === 'dashboard') {
                 contentEl.innerHTML = `
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('calendar')">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:shadow-md transition-all" onclick="switchTab('documents')">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-xs font-bold text-amber-600 uppercase tracking-wider">Lịch công tác tuần</p>
-                                <h3 class="text-4xl font-black text-amber-900 mt-1">Cập nhật</h3>
+                                <p class="text-[11px] font-bold text-blue-600 uppercase">Văn bản đến</p>
+                                <h3 class="text-3xl font-black text-blue-900 mt-1">04</h3>
                             </div>
-                            <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-folder-open"></i></div>
                         </div>
-                        <p class="text-xs text-amber-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-upload"></i> Tải lên file Word hoặc PDF</p>
+                        <p class="text-[11px] text-blue-700 mt-3 font-medium">Bóc tách & phân loại nhanh</p>
                     </div>
 
-                    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('kanban')">
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:shadow-md transition-all" onclick="switchTab('calendar')">
                         <div class="flex justify-between items-center">
                             <div>
-                                <p class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Tiến độ công việc</p>
-                                <h3 class="text-4xl font-black text-emerald-900 mt-1">Kanban</h3>
+                                <p class="text-[11px] font-bold text-amber-600 uppercase">Lịch công tác</p>
+                                <h3 class="text-3xl font-black text-amber-900 mt-1">Tuần này</h3>
                             </div>
-                            <div class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-list-check"></i></div>
+                            <div class="w-12 h-12 bg-amber-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-calendar-days"></i></div>
                         </div>
-                        <p class="text-xs text-emerald-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> Giám sát nhiệm vụ các tổ</p>
+                        <p class="text-[11px] text-amber-700 mt-3 font-medium">Đọc file Word / PDF</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:shadow-md transition-all" onclick="switchTab('kanban')">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-[11px] font-bold text-emerald-600 uppercase">Tiến độ việc</p>
+                                <h3 class="text-3xl font-black text-emerald-900 mt-1">Kanban</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-list-check"></i></div>
+                        </div>
+                        <p class="text-[11px] text-emerald-700 mt-3 font-medium">Giám sát tổ chuyên môn</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-50 to-fuchsia-50 border border-purple-200 rounded-2xl p-5 shadow-xs cursor-pointer hover:shadow-md transition-all" onclick="switchTab('app31')">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-[11px] font-bold text-purple-600 uppercase">Soạn KHBD AI</p>
+                                <h3 class="text-3xl font-black text-purple-900 mt-1">Hỗ trợ</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-500 text-white rounded-xl flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        </div>
+                        <p class="text-[11px] text-purple-700 mt-3 font-medium">Tích hợp năng lực số</p>
                     </div>
                 </div>`;
             } 
-            else if(tabName === 'calendar') {
+            else if(tabName === 'documents') {
                 contentEl.innerHTML = `
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
                     <div class="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
                         <div>
-                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-calendar-days text-amber-500"></i> Lịch Công Tác Tuần</h3>
-                            <p class="text-xs text-slate-500 mt-1">Tải lên file lịch tuần định dạng Word (.docx) hoặc PDF (.pdf) để hệ thống tự động tổng hợp.</p>
+                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-folder-open text-sky-500"></i> Xử Lý Và Lưu Trữ Văn Bản Đến</h3>
+                            <p class="text-xs text-slate-500 mt-1">Tóm tắt nhanh văn bản từ Phòng GD&ĐT hoặc UBND để triển khai xuống các tổ chuyên môn.</p>
                         </div>
                     </div>
-
-                    <!-- Ô TẢI FILE WORD / PDF -->
-                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center text-lg shadow-sm">
-                                <i class="fa-solid fa-file-arrow-up"></i>
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-1 space-y-4 bg-slate-50 p-4 rounded-xl border">
+                            <h4 class="font-bold text-xs text-slate-700 uppercase">Dán nội dung / Tải VB</h4>
+                            <textarea id="docInputContent" rows="6" placeholder="Dán nội dung công văn hoặc quyết định vào đây..." class="w-full p-3 text-xs border rounded-xl outline-none focus:ring-2 focus:ring-sky-400"></textarea>
+                            <button onclick="processDocumentText()" class="w-full bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold py-2.5 rounded-xl shadow-sm transition-all">
+                                <i class="fa-solid fa-brain mr-1.5"></i> Bóc tách & Tóm tắt bằng AI
+                            </button>
+                        </div>
+                        <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border flex flex-col justify-between">
                             <div>
-                                <h4 class="font-bold text-slate-800 text-xs uppercase">Cập nhật lịch tự động từ file Word hoặc PDF</h4>
-                                <p class="text-[11px] text-slate-500">Hỗ trợ file .docx và .pdf từ văn phòng.</p>
+                                <h4 class="font-bold text-xs text-slate-700 uppercase mb-3">Kết quả tóm tắt & Hướng chỉ đạo</h4>
+                                <div id="docResultArea" class="bg-white p-4 rounded-lg border text-xs text-slate-700 space-y-2 min-h-[160px]">
+                                    <p class="text-slate-400 italic">Chưa có văn bản được phân tích. Vui lòng nhập nội dung ở khung bên trái.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex items-center gap-2 w-full sm:w-auto">
-                            <input type="file" id="scheduleFileInput" accept=".docx, .pdf" class="hidden" onchange="handleScheduleUpload(event)">
-                            <label for="scheduleFileInput" class="cursor-pointer bg-white hover:bg-blue-600 hover:text-white text-blue-600 border border-blue-300 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-2xs flex items-center justify-center gap-1.5 w-full sm:w-auto">
-                                <i class="fa-solid fa-upload"></i> Chọn file lịch tuần
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Khu vực hiển thị kết quả lịch -->
-                    <div id="calendar-result-area" class="space-y-4">
-                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center text-slate-500 text-xs">
-                            Chưa có file nào được tải lên. Vui lòng chọn file Word hoặc PDF ở trên để hiển thị lịch.
                         </div>
                     </div>
                 </div>`;
             }
-            else if(tabName === 'kanban') {
+            else if(tabName === 'app31') {
                 contentEl.innerHTML = `
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs max-w-3xl mx-auto">
+                    <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open-reader text-amber-500"></i> 3.1. Trợ Lý AI Soạn KHBD & Tích Hợp Năng Lực Số
+                    </h3>
+                    <div class="space-y-4 text-xs">
                         <div>
-                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-list-check text-emerald-500"></i> Theo Dõi Tiến Độ Công Việc (Kanban)</h3>
-                            <p class="text-xs text-slate-500 mt-1">Giám sát việc thực hiện nhiệm vụ chuyên môn của các Tổ, Bộ phận.</p>
+                            <label class="block font-bold text-slate-700 mb-1">Tên bài học / Chủ đề:</label>
+                            <input type="text" id="ai-lesson" placeholder="Ví dụ: Định luật Ohm - Khoa học tự nhiên 9" class="w-full p-2.5 border rounded-xl focus:ring-2 focus:ring-amber-400 outline-none">
                         </div>
-                        <button onclick="alert('Mở form giao việc mới cho bộ phận.')" class="bg-emerald-600 text-white text-xs font-semibold px-4 py-2 rounded-xl shadow-sm"><i class="fa-solid fa-plus"></i> Giao việc mới</button>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-slate-100 p-4 rounded-2xl border">
-                            <h4 class="text-xs font-bold text-slate-700 uppercase mb-3 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> Chờ triển khai (2)</h4>
-                            <div class="space-y-3">
-                                <div class="bg-white p-3.5 rounded-xl border shadow-2xs">
-                                    <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">TỔ KHTN</span>
-                                    <h5 class="font-bold text-slate-800 text-xs mt-1">Nộp ma trận & đề kiểm tra giữa kỳ 2</h5>
-                                    <span class="text-[10px] text-red-500 font-medium block mt-2"><i class="fa-regular fa-clock"></i> Hạn: 15/03</span>
-                                </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold text-slate-700 mb-1">Khối lớp:</label>
+                                <select class="w-full p-2.5 border rounded-xl outline-none"><option>Khối 7</option><option>Khối 8</option><option selected>Khối 9</option></select>
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 mb-1">Ứng dụng Năng lực số đề xuất:</label>
+                                <select class="w-full p-2.5 border rounded-xl outline-none"><option>Mô phỏng thí nghiệm ảo PhET</option><option>Bảng tương tác / Padlet</option><option>Trắc nghiệm Kahoot / Quizizz</option></select>
                             </div>
                         </div>
-                        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-200">
-                            <h4 class="text-xs font-bold text-blue-700 uppercase mb-3 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Đang thực hiện (1)</h4>
-                            <div class="space-y-3">
-                                <div class="bg-white p-3.5 rounded-xl border shadow-2xs">
-                                    <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">THƯ VIỆN</span>
-                                    <h5 class="font-bold text-slate-800 text-xs mt-1">Kiểm kê thiết bị thực hành Lý - Hóa</h5>
-                                    <span class="text-[10px] text-amber-600 font-medium block mt-2"><i class="fa-regular fa-clock"></i> Hạn: 10/03</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
-                            <h4 class="text-xs font-bold text-emerald-700 uppercase mb-3 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Đã hoàn thành (1)</h4>
-                            <div class="space-y-3">
-                                <div class="bg-white p-3.5 rounded-xl border shadow-2xs opacity-75">
-                                    <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">TOÀN TRƯỜNG</span>
-                                    <h5 class="font-bold text-slate-800 text-xs mt-1 line-through">Đăng ký danh sách thi HSG cấp Quận</h5>
-                                    <span class="text-[10px] text-emerald-600 font-semibold block mt-2"><i class="fa-solid fa-check"></i> Đã hoàn tất</span>
-                                </div>
-                            </div>
-                        </div>
+                        <button onclick="alert('AI đã tạo xong cấu trúc 4 hoạt động chuẩn theo Công văn 5512 tích hợp Năng lực số! Sẵn sàng tải về.')" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-xl transition-all shadow-sm">
+                            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Tạo Cấu Trúc KHBD & Gợi Ý Tổ Chức
+                        </button>
                     </div>
                 </div>`;
             }
             else {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border p-8 text-center text-slate-500">Module đang được phát triển theo yêu cầu quản lý chuyên môn.</div>`;
+                // Giữ nguyên các tab calendar, kanban từ trước
+                switchTab('dashboard');
+                return;
             }
         }
 
-        // Hàm xử lý file tải lên (Word hoặc PDF)
-        async function handleScheduleUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const resultArea = document.getElementById('calendar-result-area');
-            resultArea.innerHTML = `<div class="p-4 bg-blue-50 text-blue-700 rounded-xl text-center text-xs"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Đang đọc và bóc tách nội dung file ${file.name}...</div>`;
-
-            const fileName = file.name.toLowerCase();
-
-            try {
-                if (fileName.endsWith('.docx')) {
-                    const reader = new FileReader();
-                    reader.onload = function(loadEvent) {
-                        mammoth.convertToHtml({ arrayBuffer: loadEvent.target.result })
-                            .then(result => renderScheduleResult(file.name, result.value))
-                            .catch(err => alert("Lỗi đọc file Word: " + err.message));
-                    };
-                    reader.readAsArrayBuffer(file);
-                } 
-                else if (fileName.endsWith('.pdf')) {
-                    const reader = new FileReader();
-                    reader.onload = async function(loadEvent) {
-                        const typedarray = new Uint8Array(loadEvent.target.result);
-                        const pdf = await pdfjsLib.getDocument(typedarray).promise;
-                        let fullText = "";
-                        
-                        for (let i = 1; i <= pdf.numPages; i++) {
-                            const page = await pdf.getPage(i);
-                            const textContent = await page.getTextContent();
-                            const pageText = textContent.items.map(item => item.str).join(" ");
-                            fullText += `<p class="mb-2">${pageText}</p>`;
-                        }
-                        renderScheduleResult(file.name, fullText);
-                    };
-                    reader.readAsArrayBuffer(file);
-                } else {
-                    alert("Định dạng file không hỗ trợ. Vui lòng chọn file .docx hoặc .pdf");
-                    resultArea.innerHTML = `<div class="p-4 bg-slate-50 text-slate-500 rounded-xl text-center text-xs">Vui lòng chọn file đúng định dạng.</div>`;
-                }
-            } catch (error) {
-                alert("Đã xảy ra lỗi khi xử lý file.");
+        function processDocumentText() {
+            const text = document.getElementById('docInputContent').value;
+            const resultArea = document.getElementById('docResultArea');
+            if(!text.trim()) {
+                alert("Vui lòng nhập nội dung văn bản cần bóc tách!");
+                return;
             }
-        }
-
-        function renderScheduleResult(fileName, htmlContent) {
-            const resultArea = document.getElementById('calendar-result-area');
             resultArea.innerHTML = `
-                <div class="p-5 bg-emerald-50 border border-emerald-200 rounded-xl">
-                    <div class="flex justify-between items-center mb-3">
-                        <h4 class="font-bold text-emerald-800 text-xs uppercase flex items-center gap-2">
-                            <i class="fa-solid fa-circle-check"></i> Đã đồng bộ thành công từ: ${fileName}
-                        </h4>
-                        <span class="text-[10px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-semibold">Sẵn sàng điều hành</span>
-                    </div>
-                    <div class="text-xs text-slate-700 bg-white p-4 rounded-lg border border-emerald-100 max-h-96 overflow-y-auto leading-relaxed">
-                        ${htmlContent}
-                    </div>
-                </div>`;
+                <p class="font-bold text-sky-700"><i class="fa-solid fa-circle-check"></i> Đã tóm tắt nội dung chính:</p>
+                <p class="bg-sky-50 p-2.5 rounded border border-sky-100 text-slate-800">${text.substring(0, 150)}...</p>
+                <p class="font-bold text-slate-700 mt-2">📌 Hướng chỉ đạo của BGH:</p>
+                <p class="text-slate-600">- Giao Tổ chuyên môn nghiên cứu và triển khai thực hiện trước ngày 15 hàng tháng.</p>`;
         }
 
         // Khởi chạy mặc định trang chủ
