@@ -137,7 +137,103 @@
         function switchTab(tabName) {
             const contentEl = document.getElementById('content-area');
             
-            if(tabName === 'dashboard') {
+           if(tabName === 'dashboard') {
+                contentEl.innerHTML = `
+                <!-- Thẻ chỉ số tổng quan (KPIs) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('documents')">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Văn bản cần bóc tách</p>
+                                <h3 class="text-4xl font-black text-blue-900 mt-1">04</h3>
+                            </div>
+                            <div class="w-14 h-14 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-envelope-open-text"></i></div>
+                        </div>
+                        <p class="text-xs text-blue-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> Xem danh sách văn bản từ VPĐT</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('kanban')">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-bold text-amber-600 uppercase tracking-wider">Nhiệm vụ đang theo dõi</p>
+                                <h3 class="text-4xl font-black text-amber-900 mt-1">12</h3>
+                            </div>
+                            <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-list-check"></i></div>
+                        </div>
+                        <p class="text-xs text-amber-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-clock"></i> 03 nhiệm vụ cần đôn đốc tổ chuyên môn</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-red-50 to-rose-50 border border-red-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('reports')">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xs font-bold text-red-600 uppercase tracking-wider">Deadline báo cáo</p>
+                                <h3 class="text-4xl font-black text-red-900 mt-1">02</h3>
+                            </div>
+                            <div class="w-14 h-14 bg-red-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        </div>
+                        <p class="text-xs text-red-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-bell"></i> Báo cáo chuyên môn tháng sắp đến hạn</p>
+                    </div>
+                </div>
+
+                <!-- Lịch công tác tuần & Truy cập nhanh App -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Lịch công tác -->
+                    <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+                        <div class="flex justify-between items-center mb-5">
+                            <h3 class="font-bold text-slate-800 text-base flex items-center gap-2"><i class="fa-solid fa-calendar-week text-blue-600"></i> Lịch công tác tuần này</h3>
+                            <button onclick="switchTab('calendar')" class="text-xs font-semibold text-blue-600 hover:underline">Xem toàn bộ lịch <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-red-50/60 border-l-4 border-red-500 rounded-r-xl flex justify-between items-center">
+                                <div>
+                                    <span class="text-[11px] font-bold text-red-700 bg-red-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-building-columns"></i> Phòng GD&ĐT</span>
+                                    <h4 class="font-semibold text-slate-800 mt-1.5 text-sm">Họp giao ban BGH các trường THCS quận Gò Vấp</h4>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">Thứ 2 (08:00)</span>
+                            </div>
+                            <div class="p-4 bg-blue-50/60 border-l-4 border-blue-500 rounded-r-xl flex justify-between items-center">
+                                <div>
+                                    <span class="text-[11px] font-bold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-users"></i> Nội bộ</span>
+                                    <h4 class="font-semibold text-slate-800 mt-1.5 text-sm">Họp Tổ trưởng chuyên môn rà soát tiến độ ôn tập</h4>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">Thứ 4 (14:00)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Truy cập nhanh Hệ sinh thái -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2"><i class="fa-solid fa-grid-2 text-indigo-600"></i> App chuyên môn nhanh</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="switchTab('app31')" class="p-3.5 rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 text-left transition-all">
+                                    <i class="fa-solid fa-book-open-reader text-amber-500 text-xl mb-1"></i>
+                                    <p class="text-xs font-bold text-slate-700">Soạn KHBD AI</p>
+                                    <span class="text-[10px] text-emerald-600 font-medium">● Sẵn sàng</span>
+                                </button>
+                                <button onclick="switchTab('app32')" class="p-3.5 rounded-xl border border-slate-200 hover:border-cyan-400 hover:bg-cyan-50/50 text-left transition-all">
+                                    <i class="fa-solid fa-users-rectangle text-cyan-500 text-xl mb-1"></i>
+                                    <p class="text-xs font-bold text-slate-700">App Xếp lớp</p>
+                                    <span class="text-[10px] text-emerald-600 font-medium">● Sẵn sàng</span>
+                                </button>
+                                <button onclick="switchTab('app33')" class="p-3.5 rounded-xl border border-slate-200 hover:border-emerald-400 hover:bg-emerald-50/50 text-left transition-all">
+                                    <i class="fa-solid fa-id-card text-emerald-500 text-xl mb-1"></i>
+                                    <p class="text-xs font-bold text-slate-700">Xếp phòng thi</p>
+                                    <span class="text-[10px] text-emerald-600 font-medium">● Sẵn sàng</span>
+                                </button>
+                                <button onclick="switchTab('app34')" class="p-3.5 rounded-xl border border-slate-200 hover:border-fuchsia-400 hover:bg-fuchsia-50/50 text-left transition-all">
+                                    <i class="fa-solid fa-child-reaching text-fuchsia-500 text-xl mb-1"></i>
+                                    <p class="text-xs font-bold text-slate-700">KHGD Hòa nhập</p>
+                                    <span class="text-[10px] text-emerald-600 font-medium">● Sẵn sàng</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 text-center">
+                            <span class="text-[11px] text-slate-400">Hệ thống đồng bộ dữ liệu liên tục</span>
+                        </div>
+                    </div>
+                </div>`;
+            } {
                 contentEl.innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-xs hover:shadow-md hover:scale-[1.01] transition-all cursor-pointer" onclick="switchTab('documents')">
