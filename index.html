@@ -76,48 +76,94 @@
 
                 <!-- Dynamic Content Area -->
                 <div id="content-area" class="p-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-xs hover:shadow-md hover:scale-[1.01] transition-all cursor-pointer" onclick="switchTab('documents')">
+                    <!-- Nội dung mặc định ban đầu là Dashboard -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('documents')">
                             <div class="flex justify-between items-center">
                                 <div>
-                                    <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Cần xử lý</p>
+                                    <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Văn bản cần bóc tách</p>
                                     <h3 class="text-4xl font-black text-blue-900 mt-1">04</h3>
                                 </div>
                                 <div class="w-14 h-14 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-envelope-open-text"></i></div>
                             </div>
-                            <p class="text-xs text-blue-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> Văn bản từ VPĐT đang chờ bóc tách nhiệm vụ.</p>
+                            <p class="text-xs text-blue-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> Xem danh sách văn bản từ VPĐT</p>
                         </div>
-                        <div class="bg-gradient-to-br from-red-50 to-orange-50 border border-red-200 rounded-2xl p-6 shadow-xs hover:shadow-md hover:scale-[1.01] transition-all cursor-pointer">
+
+                        <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('kanban')">
                             <div class="flex justify-between items-center">
                                 <div>
-                                    <p class="text-xs font-bold text-red-600 uppercase tracking-wider">Deadline cần báo cáo</p>
+                                    <p class="text-xs font-bold text-amber-600 uppercase tracking-wider">Nhiệm vụ đang theo dõi</p>
+                                    <h3 class="text-4xl font-black text-amber-900 mt-1">12</h3>
+                                </div>
+                                <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-list-check"></i></div>
+                            </div>
+                            <p class="text-xs text-amber-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-clock"></i> 03 nhiệm vụ cần đôn đốc tổ chuyên môn</p>
+                        </div>
+
+                        <div class="bg-gradient-to-br from-red-50 to-rose-50 border border-red-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('reports')">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <p class="text-xs font-bold text-red-600 uppercase tracking-wider">Deadline báo cáo</p>
                                     <h3 class="text-4xl font-black text-red-900 mt-1">02</h3>
                                 </div>
                                 <div class="w-14 h-14 bg-red-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-triangle-exclamation"></i></div>
                             </div>
-                            <p class="text-xs text-red-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-clock"></i> ⚠️ Báo cáo sơ kết học kỳ sắp đến hạn.</p>
+                            <p class="text-xs text-red-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-bell"></i> Báo cáo chuyên môn tháng sắp đến hạn</p>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-                        <div class="flex justify-between items-center mb-5">
-                            <h3 class="font-bold text-slate-800 text-base flex items-center gap-2"><i class="fa-solid fa-calendar-week text-blue-600"></i> Lịch công tác tuần</h3>
-                            <button class="bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-blue-700 hover:shadow-md transition-all flex items-center gap-2"><i class="fa-solid fa-plus"></i> Thêm sự kiện</button>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="p-4 bg-red-50/60 border-l-4 border-red-500 rounded-r-xl flex justify-between items-center hover:bg-red-50 transition-all">
-                                <div>
-                                    <span class="text-[11px] font-bold text-red-700 bg-red-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-building-columns"></i> Họp Sở / Phường</span>
-                                    <h4 class="font-semibold text-slate-800 mt-1.5">Họp giao ban hiệu trưởng với Phòng GD&ĐT Gò Vấp</h4>
-                                </div>
-                                <span class="text-xs font-semibold text-slate-500 bg-white px-3 py-1 rounded-lg border border-slate-200 shadow-2xs">Thứ Hai (08:00)</span>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
+                            <div class="flex justify-between items-center mb-5">
+                                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2"><i class="fa-solid fa-calendar-week text-blue-600"></i> Lịch công tác tuần này</h3>
+                                <button onclick="switchTab('calendar')" class="text-xs font-semibold text-blue-600 hover:underline">Xem toàn bộ lịch <i class="fa-solid fa-arrow-right ml-1"></i></button>
                             </div>
-                            <div class="p-4 bg-green-50/60 border-l-4 border-green-500 rounded-r-xl flex justify-between items-center hover:bg-green-50 transition-all">
-                                <div>
-                                    <span class="text-[11px] font-bold text-green-700 bg-green-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-users"></i> Họp HĐSP / BGH</span>
-                                    <h4 class="font-semibold text-slate-800 mt-1.5">Họp Hội đồng sư phạm triển khai nhiệm vụ tháng</h4>
+                            <div class="space-y-3">
+                                <div class="p-4 bg-red-50/60 border-l-4 border-red-500 rounded-r-xl flex justify-between items-center">
+                                    <div>
+                                        <span class="text-[11px] font-bold text-red-700 bg-red-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-building-columns"></i> Phòng GD&ĐT</span>
+                                        <h4 class="font-semibold text-slate-800 mt-1.5 text-sm">Họp giao ban BGH triển khai nhiệm vụ trọng tâm</h4>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">Thứ 2 (08:00)</span>
                                 </div>
-                                <span class="text-xs font-semibold text-slate-500 bg-white px-3 py-1 rounded-lg border border-slate-200 shadow-2xs">Thứ Tư (14:00)</span>
+                                <div class="p-4 bg-blue-50/60 border-l-4 border-blue-500 rounded-r-xl flex justify-between items-center">
+                                    <div>
+                                        <span class="text-[11px] font-bold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-users"></i> Nội bộ</span>
+                                        <h4 class="font-semibold text-slate-800 mt-1.5 text-sm">Họp Tổ trưởng chuyên môn rà soát tiến độ ôn tập</h4>
+                                    </div>
+                                    <span class="text-xs font-semibold text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">Thứ 4 (14:00)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2"><i class="fa-solid fa-grid-2 text-indigo-600"></i> App chuyên môn nhanh</h3>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button onclick="switchTab('app31')" class="p-3.5 rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 text-left transition-all">
+                                        <i class="fa-solid fa-book-open-reader text-amber-500 text-xl mb-1"></i>
+                                        <p class="text-xs font-bold text-slate-700">Soạn KHBD AI</p>
+                                        <span class="text-[10px] text-emerald-600 font-medium">● Sẵn sàng</span>
+                                    </button>
+                                    <button onclick="switchTab('app32')" class="p-3.5 rounded-xl border border-slate-200 hover:border-cyan-400 hover:bg-cyan-50/50 text-left transition-all">
+                                        <i class="fa-solid fa-users-rectangle text-cyan-500 text-xl mb-1"></i>
+                                        <p class="text-xs font-bold text-slate-700">App Xếp lớp</p>
+                                        <span class="text-[10px] text-emerald-600 font-medium">● Sẵn sàng</span>
+                                    </button>
+                                    <button onclick="switchTab('app33')" class="p-3.5 rounded-xl border border-slate-200 hover:border-emerald-400 hover:bg-emerald-50/50 text-left transition-all">
+                                        <i class="fa-solid fa-id-card text-emerald-500 text-xl mb-1"></i>
+                                        <p class="text-xs font-bold text-slate-700">Xếp phòng thi</p>
+                                        <span class="text-[10px] text-emerald-600 font-medium">● Sẵn sàng</span>
+                                    </button>
+                                    <button onclick="switchTab('app34')" class="p-3.5 rounded-xl border border-slate-200 hover:border-fuchsia-400 hover:bg-fuchsia-50/50 text-left transition-all">
+                                        <i class="fa-solid fa-child-reaching text-fuchsia-500 text-xl mb-1"></i>
+                                        <p class="text-xs font-bold text-slate-700">KHGD Hòa nhập</p>
+                                        <span class="text-[10px] text-emerald-600 font-medium">● Sẵn sàng</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 text-center">
+                                <span class="text-[11px] text-slate-400">Hệ thống đồng bộ dữ liệu liên tục</span>
                             </div>
                         </div>
                     </div>
@@ -137,9 +183,8 @@
         function switchTab(tabName) {
             const contentEl = document.getElementById('content-area');
             
-           if(tabName === 'dashboard') {
+            if(tabName === 'dashboard') {
                 contentEl.innerHTML = `
-                <!-- Thẻ chỉ số tổng quan (KPIs) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-all cursor-pointer" onclick="switchTab('documents')">
                         <div class="flex justify-between items-center">
@@ -175,9 +220,7 @@
                     </div>
                 </div>
 
-                <!-- Lịch công tác tuần & Truy cập nhanh App -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Lịch công tác -->
                     <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
                         <div class="flex justify-between items-center mb-5">
                             <h3 class="font-bold text-slate-800 text-base flex items-center gap-2"><i class="fa-solid fa-calendar-week text-blue-600"></i> Lịch công tác tuần này</h3>
@@ -187,7 +230,7 @@
                             <div class="p-4 bg-red-50/60 border-l-4 border-red-500 rounded-r-xl flex justify-between items-center">
                                 <div>
                                     <span class="text-[11px] font-bold text-red-700 bg-red-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-building-columns"></i> Phòng GD&ĐT</span>
-                                    <h4 class="font-semibold text-slate-800 mt-1.5 text-sm">Họp giao ban BGH các trường THCS quận Gò Vấp</h4>
+                                    <h4 class="font-semibold text-slate-800 mt-1.5 text-sm">Họp giao ban BGH triển khai nhiệm vụ trọng tâm</h4>
                                 </div>
                                 <span class="text-xs font-semibold text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">Thứ 2 (08:00)</span>
                             </div>
@@ -201,7 +244,6 @@
                         </div>
                     </div>
 
-                    <!-- Truy cập nhanh Hệ sinh thái -->
                     <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between">
                         <div>
                             <h3 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-2"><i class="fa-solid fa-grid-2 text-indigo-600"></i> App chuyên môn nhanh</h3>
@@ -233,56 +275,154 @@
                         </div>
                     </div>
                 </div>`;
-            } {
+            } else if(tabName === 'calendar') {
                 contentEl.innerHTML = `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 shadow-xs hover:shadow-md hover:scale-[1.01] transition-all cursor-pointer" onclick="switchTab('documents')">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Cần xử lý</p>
-                                <h3 class="text-4xl font-black text-blue-900 mt-1">04</h3>
-                            </div>
-                            <div class="w-14 h-14 bg-blue-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-envelope-open-text"></i></div>
-                        </div>
-                        <p class="text-xs text-blue-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-arrow-right"></i> Văn bản từ VPĐT đang chờ bóc tách nhiệm vụ.</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-red-50 to-orange-50 border border-red-200 rounded-2xl p-6 shadow-xs hover:shadow-md hover:scale-[1.01] transition-all cursor-pointer">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <p class="text-xs font-bold text-red-600 uppercase tracking-wider">Deadline cần báo cáo</p>
-                                <h3 class="text-4xl font-black text-red-900 mt-1">02</h3>
-                            </div>
-                            <div class="w-14 h-14 bg-red-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                        </div>
-                        <p class="text-xs text-red-700 mt-4 font-medium flex items-center gap-1"><i class="fa-solid fa-clock"></i> ⚠️ Báo cáo sơ kết học kỳ sắp đến hạn.</p>
-                    </div>
-                </div>
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-                    <div class="flex justify-between items-center mb-5">
-                        <h3 class="font-bold text-slate-800 text-base flex items-center gap-2"><i class="fa-solid fa-calendar-week text-blue-600"></i> Lịch công tác tuần</h3>
-                        <button class="bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-blue-700 hover:shadow-md transition-all flex items-center gap-2"><i class="fa-solid fa-plus"></i> Thêm sự kiện</button>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="p-4 bg-red-50/60 border-l-4 border-red-500 rounded-r-xl flex justify-between items-center hover:bg-red-50 transition-all">
-                            <div>
-                                <span class="text-[11px] font-bold text-red-700 bg-red-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-building-columns"></i> Họp Sở / Phường</span>
-                                <h4 class="font-semibold text-slate-800 mt-1.5">Họp giao ban hiệu trưởng với Phòng GD&ĐT Gò Vấp</h4>
-                            </div>
-                            <span class="text-xs font-semibold text-slate-500 bg-white px-3 py-1 rounded-lg border border-slate-200 shadow-2xs">Thứ Hai (08:00)</span>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-100">
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                <i class="fa-solid fa-calendar-days text-amber-500"></i> Lịch Công Tác Tuần
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-1">Quản lý lịch họp cấp trên và lịch công tác chuyên môn nội bộ nhà trường.</p>
                         </div>
-                        <div class="p-4 bg-green-50/60 border-l-4 border-green-500 rounded-r-xl flex justify-between items-center hover:bg-green-50 transition-all">
-                            <div>
-                                <span class="text-[11px] font-bold text-green-700 bg-green-100 px-2.5 py-1 rounded-md"><i class="fa-solid fa-users"></i> Họp HĐSP / BGH</span>
-                                <h4 class="font-semibold text-slate-800 mt-1.5">Họp Hội đồng sư phạm triển khai nhiệm vụ tháng</h4>
+                        <div class="flex items-center gap-2">
+                            <div class="flex bg-slate-100 p-1 rounded-xl text-xs font-semibold">
+                                <button class="px-3 py-1.5 bg-white text-blue-600 rounded-lg shadow-2xs">Tuần này</button>
+                                <button class="px-3 py-1.5 text-slate-600 hover:text-slate-900">Tuần tới</button>
                             </div>
-                            <span class="text-xs font-semibold text-slate-500 bg-white px-3 py-1 rounded-lg border border-slate-200 shadow-2xs">Thứ Tư (14:00)</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-plus"></i> Thêm lịch mới
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 mb-6 text-xs font-medium text-slate-600">
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span> Lịch Sở / Phòng GD&ĐT</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span> Lịch BGH / HĐSP</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Lịch Tổ chuyên môn</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+                                <span class="bg-slate-800 text-white px-2.5 py-1 rounded-md">Thứ Hai</span>
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 bg-red-50/70 border border-red-100 border-l-4 border-l-red-500 rounded-xl">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded uppercase">Phòng GD&ĐT Gò Vấp</span>
+                                        <span class="text-xs font-bold text-red-600"><i class="fa-regular fa-clock"></i> 08:00 - 11:00</span>
+                                    </div>
+                                    <h5 class="font-bold text-slate-800 text-sm">Họp giao ban BGH triển khai nhiệm vụ trọng tâm</h5>
+                                    <p class="text-xs text-slate-500 mt-1.5"><i class="fa-solid fa-location-dot mr-1"></i> Hội trường Phòng GD&ĐT | <span class="font-medium">TP: BGH</span></p>
+                                </div>
+                                <div class="p-4 bg-blue-50/70 border border-blue-100 border-l-4 border-l-blue-500 rounded-xl">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded uppercase">Nội bộ BGH</span>
+                                        <span class="text-xs font-bold text-blue-600"><i class="fa-regular fa-clock"></i> 14:00 - 16:00</span>
+                                    </div>
+                                    <h5 class="font-bold text-slate-800 text-sm">Họp thống nhất Kế hoạch kiểm tra nội bộ tháng</h5>
+                                    <p class="text-xs text-slate-500 mt-1.5"><i class="fa-solid fa-location-dot mr-1"></i> Phòng BGH | <span class="font-medium">TP: HT, PHT, TTND</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+                                <span class="bg-slate-800 text-white px-2.5 py-1 rounded-md">Thứ Tư</span>
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 bg-emerald-50/70 border border-emerald-100 border-l-4 border-l-emerald-500 rounded-xl">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded uppercase">Chuyên môn</span>
+                                        <span class="text-xs font-bold text-emerald-600"><i class="fa-regular fa-clock"></i> 14:00 - 16:30</span>
+                                    </div>
+                                    <h5 class="font-bold text-slate-800 text-sm">Sinh hoạt chuyên môn cụm - Chuyên đề STEM KHTN</h5>
+                                    <p class="text-xs text-slate-500 mt-1.5"><i class="fa-solid fa-location-dot mr-1"></i> Phòng STEM | <span class="font-medium">TP: Tổ KHTN, PHT</span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>`;
-            } else if(tabName === 'calendar') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-calendar-days text-amber-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Lịch công tác</h3><p class="mt-2">Quản lý lịch công tác tuần, lịch họp Sở, Phòng GD&ĐT và lịch sự kiện nội bộ nhà trường.</p></div>`;
             } else if(tabName === 'kanban') {
-                contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-list-check text-emerald-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Tiến độ công việc</h3><p class="mt-2">Theo dõi các nhiệm vụ đã giao cho các tổ chuyên môn và giáo viên theo dạng bảng Kanban.</p></div>`;
+                contentEl.innerHTML = `
+                <div class="h-full flex flex-col">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                <i class="fa-solid fa-list-check text-emerald-500"></i> Theo Dõi Tiến Độ Công Việc (Kanban)
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-1">Giám sát việc thực hiện nhiệm vụ chuyên môn của các Tổ, Bộ phận trong trường.</p>
+                        </div>
+                        <button class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Giao việc mới
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                        <div class="bg-slate-100/80 border border-slate-200/80 rounded-2xl p-4">
+                            <div class="flex justify-between items-center mb-3 px-1">
+                                <span class="text-xs font-bold text-slate-700 uppercase flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> Chờ triển khai (2)
+                                </span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                                    <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">TỔ KHTN</span>
+                                    <h5 class="font-bold text-slate-800 text-sm mt-1.5">Nộp ma trận & đề kiểm tra giữa kỳ 2</h5>
+                                    <div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-100 text-xs text-slate-500">
+                                        <span><i class="fa-regular fa-clock mr-1 text-red-500"></i> Hạn: 15/03</span>
+                                        <span class="font-semibold text-slate-700">Tổ trưởng KHTN</span>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                                    <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">TỔ VĂN - XÃ</span>
+                                    <h5 class="font-bold text-slate-800 text-sm mt-1.5">Kế hoạch ngoại khóa Lịch sử địa phương</h5>
+                                    <div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-100 text-xs text-slate-500">
+                                        <span><i class="fa-regular fa-clock mr-1"></i> Hạn: 20/03</span>
+                                        <span class="font-semibold text-slate-700">Tổ trưởng KHXH</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50/50 border border-blue-200/60 rounded-2xl p-4">
+                            <div class="flex justify-between items-center mb-3 px-1">
+                                <span class="text-xs font-bold text-blue-700 uppercase flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Đang thực hiện (1)
+                                </span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                                    <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">THƯ VIỆN - TB</span>
+                                    <h5 class="font-bold text-slate-800 text-sm mt-1.5">Kiểm kê thiết bị thực hành Lý - Hóa học kỳ 2</h5>
+                                    <div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-100 text-xs text-slate-500">
+                                        <span><i class="fa-regular fa-clock mr-1 text-amber-500"></i> Hạn: 10/03</span>
+                                        <span class="font-semibold text-slate-700">CB Thiết bị</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50/50 border border-emerald-200/60 rounded-2xl p-4">
+                            <div class="flex justify-between items-center mb-3 px-1">
+                                <span class="text-xs font-bold text-emerald-700 uppercase flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Đã hoàn thành (1)
+                                </span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs opacity-80">
+                                    <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">TOÀN TRƯỜNG</span>
+                                    <h5 class="font-bold text-slate-800 text-sm mt-1.5 line-through">Đăng ký danh sách thi HSG cấp Quận</h5>
+                                    <div class="flex justify-between items-center mt-3 pt-3 border-t border-slate-100 text-xs text-emerald-600 font-semibold">
+                                        <span><i class="fa-solid fa-check-circle mr-1"></i> Đã duyệt</span>
+                                        <span>Hoàn tất</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
             } else if(tabName === 'documents') {
                 contentEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xs text-slate-600"><i class="fa-solid fa-folder-open text-sky-500 text-2xl mb-2"></i><h3 class="font-bold text-slate-800 text-lg">Xử lý và lưu trữ văn bản</h3><p class="mt-2">Quản lý kho văn bản đến từ cấp trên và văn bản đi do nhà trường ban hành.</p></div>`;
             } else if(tabName === 'timetable') {
